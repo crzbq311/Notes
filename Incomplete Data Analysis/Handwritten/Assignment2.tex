@@ -1,0 +1,229 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+\usepackage[parfill]{parskip}    			% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or epsÂ§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows}
+
+\def\firstcircle{(90:1.75cm) circle (2.5cm)}
+\def\secondcircle{(210:1.75cm) circle (2.5cm)}
+\def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+
+%SetFonts
+
+%SetFonts
+
+
+\title{Complex Variables - Assignment 2}
+\author{Baoqi Zhang - S2067576}
+\date{\today}							% Activate to display a given date or no date
+
+\begin{document}
+
+\maketitle
+
+\section*{Workshop 2}
+
+\subsection*{Question 5}
+
+(\(\Rightarrow\))Let \(a_0 \in \mathbb{C}\) be a non-zero complex number, and suppose \(U\subseteq \mathbb{C}\) be an open set. Since the set \(U\) is open, then by definition 1.2.2, for all \(u_0 \in U\),	there exists \(\epsilon > 0\) such that \(D_{\epsilon}(u_0) \subseteq U\).
+
+Consider the set \(a_0U = \{a_0u: u\in U\}\). For all \(u_0\in U\),  \(a_0u_0 \in a_0U\), \(D_{\epsilon}(u_0)\) is mapped to \(D_{\epsilon|a_0| }(a_0u_0)\) under the mapping \(f:u\rightarrow a_0u\). i.e. \(D_{\epsilon}(u_0) = \{u_0\in U:|u-u_0|<\epsilon\}= \{|a_0||u-u_0|<|a_0|\epsilon\}= \{|a_0u-a_0zu_0|<|a_0|\epsilon\}=D_{\epsilon|a_0|}(a_0u_0)\). Since \(a_0 \not= 0 \ and \ \epsilon>0\), we have \(\epsilon|a_0| > 0 \). Thus \(D_{\epsilon|a_0|}(a_0u_0) \subseteq a_0U\). Hence \(a_0U\) is open.
+
+(\(\Leftarrow\))Conversely, if the set \(a_0U = \{a_0u: u\in U\}\) is open, then by definition 1.2.2, for all \(a_0u_0 \in a_0U\), there exists an \(\epsilon >0\) such that \(D_{ \epsilon}(a_0u_0) \subseteq a_0U\), i.e. \(D_{\epsilon}(a_0u_0) = \{a_0u_0\in a_0U:|a_0u-a_0u_0|<\epsilon\}= \{u_0 \in U:\frac{|a_0||u-u_0|}{|a_0|}<\frac{\epsilon}{|a_0|}\}= \{u_0 \in U:|u-u_0|<\frac{\epsilon}{|a_0|}\}=D_{\epsilon/a_0}(u_0)\). Thus for all \(z_0 \in U\), there exists an \(\epsilon>0\),  such that \(D_{\epsilon/|a_0|}(u_0) \subseteq U\). Hence \(U \subseteq \mathbb{C}\) is open.
+
+Hence,  we proved that \(U \subseteq \mathbb{C}\) is open if and only if the set \(a_0U = \{a_0u: u\in U\}\) is open.
+
+
+
+\newpage
+
+\subsection*{Question 6}
+
+We should first prove that \(U = \mathbb{C} \setminus \{z= re^{i0}: r\geq 0\}\) is open, let \(z_0 = x_0+iy_0\in U\). Set \(\epsilon = |y_0|\), such that \(\{z_0\in U:|z-z_0|< \epsilon\}= D_{\epsilon}(z_0) = D_{|y_0|}(z_0)\)
+\begin{align*}
+	|z-z_0| = |x+iy-x_0-iy_0| <|y_0|
+	&
+	\\
+	\sqrt{(x-x_0)^2+(y-y_0)^2} < |y_0|
+	\\
+	(x-x_0)^2+(y-y_0)^2<y_0^2
+\end{align*}
+
+From above, we can see that \(y \not= 0\), or the inequality does not hold, since \((x-x_0)^2 >0\). So the open ball does not intersect or touch the positive real axis, so \(z\in U\), and \(D_{|y_0|}(z_0)= D_{\epsilon}(z_0) \subseteq D_{\phi}\) .
+
+By question 5, we have \(U \subseteq \mathbb{C}\) is open if and only if the set \(a_0U = \{a_0u: u\in U\}\), which is open, now set \(a_0 = e^{i\phi}\), then \(a_0 U = \{z= re^{i\phi}: r\geq 0\}\), so the cut plane \(D_{\phi} = \mathbb{C} \setminus \{z= re^{i0}: r\geq 0\}\) is open.
+	
+
+\newpage
+
+\section*{Workshop 3}
+
+\subsection*{Question 5}
+Let \(z=x+iy \in \mathbb{C}\), so \(Re(z) = x\) and \(Im(z) = y\). Then \(f(z) = \sqrt[3]{|(Re(z))^2Im(z)|} = \sqrt[3]{|x^2y|} = \sqrt[3]{x^2|y|}\).
+
+Suppose \( f = u+iv\), then \(u = \sqrt[3]{x^2|y|}\) and \(v=0\). Applying the partial derivatives of u and v with respect to x and y, and at \(z_0 = 0\), we have 
+\begin{align*}
+	\left.\frac{\partial{u}}{\partial{x}}(z_0) = \frac{\partial{u}}{\partial{x}}(0,0) \right\vert_{y=0} = lim_{x\rightarrow0 }\frac{\partial{u}}{\partial{x}}(0,0) 
+	= lim_{x\rightarrow0 }\frac{f(z) -f(z_0)}{z-z_0} = lim_{x\rightarrow0}\frac{\sqrt[3]{x^2|y|}-\sqrt[3]{0}}{x-0}=0 
+	&
+	\\
+	\left.\frac{\partial{u}}{\partial{y}}(z_0) = \frac{\partial{u}}{\partial{y}}(0,0) \right\vert_{x=0} = lim_{y\rightarrow0 }\frac{\partial{u}}{\partial{y}}(0,0) 
+	= lim_{y\rightarrow0 }\frac{f(z) -f(z_0)}{z-z_0} = lim_{y\rightarrow0}\frac{\sqrt[3]{x^2|y|}-\sqrt[3]{0}}{y-0}=0
+\end{align*}
+and,
+\begin{equation*}
+	\frac{\partial{v}}{\partial{x}}(z_0) = \frac{\partial{v}}{\partial{y}}(z_0) = 0
+\end{equation*}
+we can conclude that 
+\begin{equation*}
+	\frac{\partial{u}}{\partial{x}}(z_0)=\frac{\partial{v}}{\partial{y}}(z_0) = 0 \ ; \frac{\partial{v}}{\partial{x}}(z_0) = - \frac{\partial{u}}{\partial{y}}(z_0)=0
+\end{equation*}
+
+which satisfies the Cauchy-Riemann equations.
+
+However, \(f = u(x,y)+iv(x,y)\) is not differentiable at \(z = 0\), where \(u(x,y) = \sqrt[3]{|(Re(z))^2Im(z)|}\) and \(v(x,y)=0\). To see this, consider the partial derivative of u(x,y) wtih respect to x under y=x, and let \(z=x+iy\), then \(z = x+xi\) :
+\begin{equation*}
+  \frac{\partial{u}}{\partial{x}}(0,0) = lim_ {x \rightarrow 0} \frac{u(z) - u(0)}{x-0} = lim_{x\rightarrow 0} \frac{\sqrt[3]{|(Re(z))^2Im(z)|}-0}{x} = lim_{x\rightarrow 0} \frac{\sqrt[3]{x^2|x|}}{x} 	
+\end{equation*}
+
+If x is negative, then \(|x| = -x\), and thus \(\frac{\partial{u}}{\partial{x}}(0,0)\) = \(lim_{x\rightarrow 0} \frac{\sqrt[3]{x^2|x|}}{-x}=-1\) 	
+
+If x is positive, then \(|x| = x\), and thus \(\frac{\partial{u}}{\partial{x}}(0,0)\) = \(lim_{x\rightarrow 0} \frac{\sqrt[3]{x^2|x|}}{x}=1\)
+
+From above, we can see that the limits are different, hence \(f\) is not differentiable at 0. 	
+
+
+Therefore, \(f\) satisfies the Cauchy-Riemann equations at z = 0, but it is not differentiable at 0.
+
+
+
+
+\newpage
+
+
+\subsection*{Question 6}
+Given the imaginary part of a holomorphic function \(f(u,v)\) is 
+	\begin{equation*}
+		v(x,y) = ax^3+bx^2y+cxy^2+dy^3
+	\end{equation*} 
+so the partial derivative with respect to x and y are
+
+\begin{align*}
+  \frac{\partial{v}}{\partial{x}} = 3ax^2+2bxy+cy^2 ; \  \ \frac{\partial^2{v}}{\partial{x}^2} = 6ax+2by
+  &
+  \\
+  \
+  \frac{\partial{v}}{\partial{y}} = bx^2+2cxy+3dy^2; \  \ \frac{\partial^2{v}}{\partial{y}^2} = 2cx+6dy
+\end{align*}
+	
+By lemma 1.4.14, if the function \(f=u+iv\) is holomorphic on \(\mathbb{C}\), then \(u  \ and \  v\) are harmonic. Since \(v\) is harmonic, by definition 1.4.13, \(v\) satisfies the Laplace equation, i.e
+
+\begin{equation*}
+	\frac{\partial^2{v}}{\partial{x}^2}(x,y)+\frac{\partial^2{v}}{\partial{y}^2}(x,y) = 0
+\end{equation*}
+
+Then we have 
+\begin{align*}
+	6ax+2by+2cx+6dy = 0
+	&
+	\\
+	\Rightarrow(6a+2c)x+(2b+6d)y = 0
+	&
+	\\
+	\Rightarrow c = -3a \ \ and\  \ b=-3d
+\end{align*} 
+
+so \(v(x,y)\) can be rewritten as \(v(x,y) = ax^3-3dx^2y-3axy^2+dy^3\).
+
+Given that \(f\) is holomporphic, then it must be differentiable, thus \(f\) holds the Cauchy-Riemann equations:
+
+\begin{align*}
+	\frac{\partial{u}}{\partial{x}}(x,y)=\frac{\partial{v}}{\partial{y}}(x,y) = -3dx^2-6axy+3dy^2
+	&
+	\\
+	\frac{\partial{u}}{\partial{y}}(x,y)= -\frac{\partial{v}}{\partial{x}}(x,y) = -3ax^2+6dxy+3ay^2
+\end{align*}
+
+Then we integrate \(\frac{\partial{u}}{\partial{x}}(x,y)\) with respect to x, we have
+\begin{align*}
+	-dx^3-3ax^2y+3dx^2y+\phi(x), \ for \ some \ function \ \phi:\mathbb{R} \rightarrow \mathbb{R}
+\end{align*}
+and we integrate \(\frac{\partial{u}}{\partial{y}}(x,y)\) with respect to y, we have
+\begin{equation*}
+	 -3ax^2y+3dxy^2+ay^3+\psi(x), \ for \ some \ function \ \psi:\mathbb{R} \rightarrow \mathbb{R}
+\end{equation*}
+
+so u can be written as \(-dx^3-3ax^2+3dxy^2+ay^3+ \alpha\), where \(\alpha \in \mathbb{R}\) is a constant.
+Hence \(f(x+iy) = (-dx^3-3ax^2y+3dxy^2+ay^3+\alpha)+i(ax^3-3dx^2y-3axy^2+dy^3)\) is the constructed holomorphic function.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+	
+
+
+	
+
+\end{document}  
+
